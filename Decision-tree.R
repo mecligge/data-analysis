@@ -40,5 +40,5 @@ fancyRpartPlot(fit)
 
 Prediction <- predict(fit, normwine.test, type = "class")
 
-submit <- data.frame( quality = Prediction)
-write.csv(submit, file = "winetest.csv", row.names = FALSE)
+wineresults.decisiontree <- data.frame( quality = Prediction)
+write.csv(wineresults.decisiontree, file = "winetest.csv", row.names = FALSE)
