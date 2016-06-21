@@ -34,6 +34,11 @@ normwine.test <- normwine[ind==2, 1:12]
 
 fit <- rpart(as.factor(quality) ~ fixed.acidity + volatile.acidity + citric.acid + residual.sugar + chlorides +
                       free.sulfur.dioxide + total.sulfur.dioxide + density + pH + sulphates + alcohol 
-                    , data=normwine.training, method="class",  control=rpart.control(cp=0.005))
+                    , data=normwine.training, method="class",  control=rpart.control(cp=0.0045))
 
 fancyRpartPlot(fit)
+
+Prediction <- predict(fit, normwine.test, type = "class")
+
+submit <- data.frame( quality = Prediction)
+write.csv(submit, file = "winetest.csv", row.names = FALSE)
