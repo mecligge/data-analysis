@@ -1,3 +1,6 @@
+setwd("C:\\Users\\Martijn Cligge\\Documents\\School\\R") 
+
+
 library(rpart)
 library(rattle)
 library(rpart.plot)
@@ -31,5 +34,6 @@ normwine.test <- normwine[ind==2, 1:12]
 
 fit <- rpart(as.factor(quality) ~ fixed.acidity + volatile.acidity + citric.acid + residual.sugar + chlorides +
                       free.sulfur.dioxide + total.sulfur.dioxide + density + pH + sulphates + alcohol 
-                    , data=normwine.training,  method="class")
+                    , data=normwine.training, method="class",  control=rpart.control(cp=0.005))
+
 fancyRpartPlot(fit)
